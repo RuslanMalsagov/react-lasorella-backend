@@ -6,13 +6,6 @@ const productSchema = mongoose.Schema({
   description: String,
   weight: Number,
   photo: { type: mongoose.SchemaTypes.ObjectId, ref: 'Image' },
-  review: [
-    {
-      user: String,
-      text: String,
-      rating: Number,
-    },
-  ],
 });
 
 const Product = mongoose.model('Product', productSchema);

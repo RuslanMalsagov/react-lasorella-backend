@@ -45,26 +45,26 @@ module.exports.productsController = {
     }
   },
 
-  addReview: async (req, res) => {
-    try {
-      const { review } = req.body;
+//   addReview: async (req, res) => {
+//     try {
+//       const { review } = req.body;
 
-      const product = await Product.findByIdAndUpdate(
-        req.params.id,
-        {
-          $addToSet: {
-            review,
-          },
-        },
-        { new: true },
-      );
+//       const product = await Product.findByIdAndUpdate(
+//         req.params.id,
+//         {
+//           $addToSet: {
+//             review,
+//           },
+//         },
+//         { new: true },
+//       );
 
-      res.json(product);
-    } catch (error) {
-      console.log('patchProduct', error);
-      res.json(error);
-    }
-  },
+//       res.json(product);
+//     } catch (error) {
+//       console.log('patchProduct', error);
+//       res.json(error);
+//     }
+//   },
 
   deleteProduct: async (req, res) => {
     try {
