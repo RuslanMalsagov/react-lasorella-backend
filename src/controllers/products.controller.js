@@ -3,11 +3,12 @@ const Product = require('../models/Product.model');
 module.exports.productsController = {
   postProduct: async (req, res) => {
     try {
-      const { name, price, description, weight, photo, review } = req.body;
+      const { name, price, description, weight, photo, review, category } = req.body;
 
       const product = await Product.create({
         name,
         price,
+        category,
         description,
         weight,
         photo,
@@ -23,13 +24,14 @@ module.exports.productsController = {
 
   patchProduct: async (req, res) => {
     try {
-      const { name, price, description, weight, photo, review } = req.body;
+      const { name, price, category, description, weight, photo, review } = req.body;
 
       const product = await Product.findByIdAndUpdate(
         req.params.id,
         {
           name,
           price,
+          category,
           description,
           weight,
           photo,
@@ -37,7 +39,6 @@ module.exports.productsController = {
         },
         { new: true },
       );
-
       res.json(product);
     } catch (error) {
       console.log('patchProduct', error);
@@ -45,26 +46,26 @@ module.exports.productsController = {
     }
   },
 
-//   addReview: async (req, res) => {
-//     try {
-//       const { review } = req.body;
+  //   addReview: async (req, res) => {
+  //     try {
+  //       const { review } = req.body;
 
-//       const product = await Product.findByIdAndUpdate(
-//         req.params.id,
-//         {
-//           $addToSet: {
-//             review,
-//           },
-//         },
-//         { new: true },
-//       );
+  //       const product = await Product.findByIdAndUpdate(
+  //         req.params.id,
+  //         {
+  //           $addToSet: {
+  //             review,
+  //           },
+  //         },
+  //         { new: true },
+  //       );
 
-//       res.json(product);
-//     } catch (error) {
-//       console.log('patchProduct', error);
-//       res.json(error);
-//     }
-//   },
+  //       res.json(product);
+  //     } catch (error) {
+  //       console.log('patchProduct', error);
+  //       res.json(error);
+  //     }
+  //   },
 
   deleteProduct: async (req, res) => {
     try {
