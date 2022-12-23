@@ -13,7 +13,7 @@ module.exports.categoriesController = {
       res.json(error);
     }
   },
-  
+
   deleteCategory: async (req, res) => {
     try {
       res.json();
